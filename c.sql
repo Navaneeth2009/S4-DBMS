@@ -28,6 +28,7 @@ select max(p_price ) as Maximum_Price from products;
 select count(p_id) as Total_no_of_products from products;
 select sum(p_price) as Total_Amount from products;
 select avg(p_price) as average_price from products;
+//feb 13
 case manipulative functions (LOWER,UPPER,INITCAP)
 select LOWER ('ASIET IS FOR TECH GEEKS ONLY') from dual;
 select UPPER ('asiet is only for geeks')from dual;
