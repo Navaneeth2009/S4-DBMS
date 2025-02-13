@@ -50,3 +50,4 @@ select trim ('A' from 'Android') from dual;
 select trim('    Android') from dual;
 select replace ('Data management','Data','Database') from dual;
 //ddl and dml queries in next lab [insert,create,constraints,insert atleat 7 rows
+// right top roll and name every assign as file ,file name is roll no.
