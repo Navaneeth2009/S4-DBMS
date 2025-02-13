@@ -75,3 +75,10 @@ select s.sname from sailors s where s.sid in (select r.sid from reserves r where
 select s.sname from sailors s where s.sid exists(select r.sid from reserves r where r.bid=103);
 7. find names and age of youngest sailor
 select s.sname,s.age from sailors s where s.age <= all(select age from sailors);
+DATE FUNCTIONS:
+select sysdate from dual;
+select NEXT_DAY(sysdate,'Wed') from dual;
+select ADD_months(sysdate,2) from dual;
+select MONTHS_BETWEEN(sysdate,hiredate) from emp;
+select LEAST('10-jan-2008','12-oct-2006')from dual;
+select GREATEST('10-jan-2008','12-oct-2006')from dual;
