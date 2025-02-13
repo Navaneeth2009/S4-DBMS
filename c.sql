@@ -51,3 +51,27 @@ select trim('    Android') from dual;
 select replace ('Data management','Data','Database') from dual;
 //ddl and dml queries in next lab [insert,create,constraints,insert atleat 7 rows
 // right top roll and name every assign as file ,file name is roll no.
+create table boat(bid int primary key,bname char(10),color char(10));
+create table reserves(sid int,bid int,day date,foreign key(sid) references sailors(sid),foreign key(bid) references boat(bid));
+create table sailors(sid int primary key,sname varchar(10),rating int,age int check(age>16 and age<100));
+insert into boat values(&bid,'&bname','&color');
+insert into sailors values(&sid,'&sname',&rating,&age);
+//reserves have prob
+
+1.find names of sailors who have resereved red or yellow boats
+select s.sname  from sailors s,boat b,reserves r where s.sid=r.sid and b.bid=r.bid and(b.color='red' or b.color='yellow');
+2.find all sailors who have rating 10 or have reserved boat 111.
+select s.sid from sailors s where s.rating=10 union select r.sid from reserves r where r.bid=111;
+3.find all sids of sailors who have reserved red boats but not yellow boats
+select s.sid from sailors s,boat b,reserves r where s.sid=r.sid and r.bid=b.bid and b.color='red' minus
+select s2.sid from sailors s2,boat b2,reserves r2 where s2.sid=r2.sid and r2.bid=b2.bid and b2.color='yellow';
+4.find the name  of sailors who have reserved both red and yellow boat
+select s.sname from sailors s,boat b where b.color='red' intersect
+select s.sname from sailors s,boat b where b.color='yellow';
+5.find nme of sailors who have reserved red boats and list in the order of age
+select s.sname ,s.age from sailors s ,reserves r ,boat b where s.sid=r.sid and r.bid=b.bid and b.color='red' order by s.age;
+6.find names of sailors who have reserved boat 103 [
+select s.sname from sailors s where s.sid in (select r.sid from reserves r where r.bid=103);
+select s.sname from sailors s where s.sid exists(select r.sid from reserves r where r.bid=103);
+7. find names and age of youngest sailor
+select s.sname,s.age from sailors s where s.age <= all(select age from sailors);
