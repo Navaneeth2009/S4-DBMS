@@ -145,10 +145,37 @@ mysql> select e.name,d.department_name from employees e left join departments d 
 | aio   | a1              |
 | bio   | a2              |
 | jing  | a3              |
+| pling | a4              |mysql> select e.name,d.department_name from employees e left outer join departments d on e.department_id=d.department_id union select e.name,d.department_name from employees e right outer join departments
+ d on e.department_id=d.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
 | pling | a4              |
 | fred  | a5              |
 +-------+-----------------+
 5 rows in set (0.00 sec)
+
+
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select e.name,d.department_name from employees e left outer join departments d on e.department_id=d.department_id union select e.name,d.department_name from employees e right outer join departments
+ d on e.department_id=d.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
 
 
 
