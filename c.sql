@@ -82,3 +82,60 @@ select ADD_months(sysdate,2) from dual;
 select MONTHS_BETWEEN(sysdate,hiredate) from emp;
 select LEAST('10-jan-2008','12-oct-2006')from dual;
 select GREATEST('10-jan-2008','12-oct-2006')from dual;
+
+//JOIN
+  //INNER JOIN
+mysql> CREATE TABLE departments(department_id int primary key,department_name varchar(100));
+Querymysql> create table employees(employee_id int primary key,name varchar(100),department_id int,foreign key(department_id) references departments(department_id));
+Query OK, 0 rows affected (0.04 sec)
+
+ OK, 0 rows affected (0.04 sec)
+mysql> SELECT name,department_name from employees inner join departments on employees.department_id=departments.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select employees.name,departments.department_name from employees inner join departments on employees.department_id=departments.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.01 sec)
+
+mysql> select name, department_name from employees e inner join departments d on e.department_id=d.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
+mysql> select e.name, d.department_name from employees e inner join departments d on e.department_id=d.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
+
