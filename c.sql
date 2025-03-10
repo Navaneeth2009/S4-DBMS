@@ -137,5 +137,19 @@ mysql> select e.name, d.department_name from employees e inner join departments 
 | fred  | a5              |
 +-------+-----------------+
 5 rows in set (0.00 sec)
+//FULL JOIN
+mysql> select e.name,d.department_name from employees e left join departments d on e.department_id=d.department_id union select e.name,d.department_name from employees e right join departments d on e.department_id=d.department_id;
++-------+-----------------+
+| name  | department_name |
++-------+-----------------+
+| aio   | a1              |
+| bio   | a2              |
+| jing  | a3              |
+| pling | a4              |
+| fred  | a5              |
++-------+-----------------+
+5 rows in set (0.00 sec)
+
+
 
 
