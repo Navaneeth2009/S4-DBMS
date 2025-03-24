@@ -84,7 +84,7 @@ DECLARE
   6  		BEGIN 
   7  			IF i.unit <= 40 THEN
   8  				v_total := i.rent;
-  9  			ELSE IF i.unit <= 80 THEN
+  9  			ELSIF i.unit <= 80 THEN
  10  				v_total := i.rent + (i.unit - 40) * 0.40;
  11  			ELSE 
  12  				v_total := i.rent + (40 * 0.40) + (i.unit-80)*1.40;
